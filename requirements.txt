@@ -1,0 +1,16 @@
+Flask==0.10.1
+Flask-Cors==1.10.3
+Flask-HTTPAuth==2.4.0
+Flask-JSONRPC==0.1
+Jinja2==2.7.3
+MarkupSafe==0.23
+Werkzeug==0.10.1
+argparse==1.2.1
+bunch==1.0.1
+cffi
+cryptography
+enum34==1.0.4
+itsdangerous==0.24
+pyasn1==0.1.7
+pycparser==2.10
+wsgiref==0.1.2
