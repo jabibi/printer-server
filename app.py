@@ -6,7 +6,7 @@ import os
 import sqlite3
 import uuid
 from flask import Flask
-from flask_cors import CORS
+from flask_cors import CORS, cross_origin
 from flask_jsonrpc import JSONRPC
 from flask.ext.httpauth import HTTPBasicAuth
 from printer import PrinterController
@@ -26,7 +26,7 @@ parser.add_argument('-d', '--device', help='name of the printer to print to',
 args = parser.parse_args()
 
 app = Flask(__name__)
-cors = CORS(app, allow_headers="Content-type,Authorization")
+cors = CORS(app, allow_headers=["Content-type", "Authorization"])
 auth = HTTPBasicAuth()
 jsonrpc = JSONRPC(app, "/api")
 
@@ -82,6 +82,7 @@ def index():
 
 @jsonrpc.method("output")
 @auth.login_required
+@cross_origin
 def output(printer_name=None, format="epl2", data=[], length=6, width=4,
            raw=False):
     '''Print something on the printer.'''
