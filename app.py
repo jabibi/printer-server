@@ -3,6 +3,7 @@ import argparse
 import hashlib
 import inspect
 import os
+import socket
 import sqlite3
 import uuid
 from flask import Flask
@@ -29,6 +30,9 @@ app = Flask(__name__)
 cors = CORS(app, allow_headers=["Content-type", "Authorization"])
 auth = HTTPBasicAuth()
 jsonrpc = JSONRPC(app, "/api")
+
+# TIMEOUT
+socket.setdefaulttimeout(10) # seconds
 
 
 # Not a route on purpose.
