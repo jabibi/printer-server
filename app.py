@@ -87,7 +87,7 @@ def index():
 # Routes & JSON-RPC methods ##
 @app.route("/version")
 def version():
-    return "0.2"
+    return "0.2s"
 
 
 @jsonrpc.method("output")
@@ -114,7 +114,8 @@ def run():
     db.commit()
     db.close()
 
-    app.run(args.host, debug=False, port=int(args.port))
+    context = ('server.crt', 'server.key')
+    app.run(args.host, debug=False, port=int(args.port), ssl_context=context)
 
 
 if __name__ == "__main__":
